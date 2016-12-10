@@ -1,12 +1,26 @@
-
+package Datascience;
 import cern.colt.matrix.DoubleMatrix1D;
 import cern.colt.matrix.DoubleMatrix2D;
+import cern.colt.matrix.impl.DenseDoubleMatrix1D;
 import cern.colt.matrix.impl.DenseDoubleMatrix2D;
 import cern.colt.matrix.linalg.Algebra;
-import java.lang.Math;
 public class LogisticRegression {
 	public DoubleMatrix2D X;
 	public DoubleMatrix1D y;
+	public DoubleMatrix1D theta;
+	
+	public LogisticRegression(DoubleMatrix2D x, DoubleMatrix1D y, DoubleMatrix1D theta) {
+		super();
+		X = x;
+		this.y = y;
+		this.theta = theta;
+	}
+
+	public void train(int epoch, double learningRate){
+		Algebra a = new Algebra();
+		
+	}
+	
 	
 	
 	public double sigmoid(double z){
@@ -14,12 +28,12 @@ public class LogisticRegression {
 	}
 	
 	public static void main(String[] args) {
-		double[][] m = {{1,2,3},{5,6,7},{8,9,10}};
-		double[][] j = {{1,2,3},{1,1,1},{0,0,1}};
-		Algebra a = new Algebra();
-		DoubleMatrix2D matrix1 = new DenseDoubleMatrix2D(m);
-		DoubleMatrix2D matrix2 = new DenseDoubleMatrix2D(j);
-		System.out.println(a.mult(matrix1, matrix2));
+		double x [][] = {{1,2,3},{1,2,3},{1,2,3}};
+		double y [] = {1,2,3};
+		double theta [] = {1,1,1};
+		DoubleMatrix2D m = new DenseDoubleMatrix2D(x);
+		LogisticRegression lg = new LogisticRegression(new DenseDoubleMatrix2D(x), new DenseDoubleMatrix1D(y), new DenseDoubleMatrix1D(theta));
+		System.out.println(m.cardinality());
 	}
 }
 	
